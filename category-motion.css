@@ -1,0 +1,17 @@
+#categories .category-card{position:relative;isolation:isolate;transform:translateY(0);transition:transform .3s ease,box-shadow .3s ease,background .3s ease;outline-offset:5px;-webkit-tap-highlight-color:transparent}
+.category-image-frame{display:block;overflow:hidden;aspect-ratio:1.22;background:#f3e9dd}
+#categories .category-image-frame img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.2,.65,.3,1),filter .45s ease}
+#categories .category-bottom{position:relative;z-index:1;transition:background .3s ease}
+#categories .category-bottom h3{transition:color .25s ease}
+#categories .circle-arrow{position:relative;transition:transform .3s ease,background .3s ease,color .3s ease,box-shadow .3s ease}
+#categories .category-card:focus-visible{outline:3px solid #e96513;box-shadow:0 10px 24px #17314e20}
+#categories .category-card:focus-visible .circle-arrow{background:#e96513;color:white;transform:translateX(5px)}
+@media(hover:hover) and (pointer:fine){
+ #categories .category-card:hover{transform:translateY(-8px);box-shadow:0 16px 32px #17314e20;background:#fff7ed}
+ #categories .category-card:hover img{transform:scale(1.065);filter:brightness(1.04)}
+ #categories .category-card:hover h3{color:#d65a0b}
+ #categories .category-card:hover .circle-arrow{transform:translateX(6px);background:#ed6a16;color:#fff;box-shadow:0 4px 12px #e9651333}
+}
+#categories .category-card:active{transform:translateY(-2px) scale(.975);transition-duration:.1s}
+#categories .category-card:active .circle-arrow{background:#c94f08;color:white;transform:translateX(8px)}
+@media(prefers-reduced-motion:reduce){#categories .category-card,#categories .category-card img,#categories .category-bottom,#categories h3,#categories .circle-arrow{transition:none!important;transform:none!important}}
