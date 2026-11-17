@@ -61,3 +61,21 @@ html{scroll-padding-top:var(--scene-header)}
 /* Match immersive headings to the established homepage heading family and weight. */
 .scene-story h2,.pet-detail h3{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.06;letter-spacing:-.035em}
 .scene-story p,.pet-detail p{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif}
+
+/* Subtle markers with generous invisible touch targets. */
+.scene-spot .spot-ring{width:24px;height:24px;border-width:2px;background:#df7938;box-shadow:0 2px 7px #19344f35}
+.scene-spot .spot-ring:before{font-size:19px;font-weight:400}
+.scene-spot .spot-ring:after{inset:-5px;border-width:1px;animation-duration:3.6s}
+.scene-spot:hover .spot-ring,.scene-spot:focus-visible .spot-ring{transform:scale(1.12);box-shadow:0 0 0 4px #ffffff30,0 2px 8px #19344f40}
+@keyframes spot-beacon{0%{transform:scale(.9);opacity:.45}70%,100%{transform:scale(1.2);opacity:0}}
+@media(max-width:740px){.scene-spot .spot-ring{width:24px;height:24px}}
+
+/* Four hollow halo hotspots. Preserve the larger invisible hit area. */
+.scene-spot .spot-ring{width:22px;height:22px;border:2px solid #fff;background:rgba(255,255,255,.08);box-shadow:0 0 0 4px #ffffff1a,0 1px 7px #17314e55,inset 0 0 5px #ffffff35}
+.scene-spot .spot-ring:before{content:none}
+.scene-spot .spot-ring:after{inset:-7px;border:1px solid #ffffffb3;animation:spot-beacon 3.2s ease-out infinite}
+.scene-spot:hover .spot-ring,.scene-spot:focus-visible .spot-ring{background:#ffffff26;border-color:#fff;transform:scale(1.12);box-shadow:0 0 0 5px #ffffff30,0 0 13px #ffffff60,0 2px 7px #17314e55}
+.scene-spot:active .spot-ring{transform:scale(.94)}
+.scene-static .spot-ring:after{animation:none;opacity:.4}
+@media(max-width:740px){.scene-spot .spot-ring{width:22px;height:22px}}
+@media(prefers-reduced-motion:reduce){.scene-spot .spot-ring:after{animation:none;opacity:.4}}
