@@ -79,3 +79,24 @@ html{scroll-padding-top:var(--scene-header)}
 .scene-static .spot-ring:after{animation:none;opacity:.4}
 @media(max-width:740px){.scene-spot .spot-ring{width:22px;height:22px}}
 @media(prefers-reduced-motion:reduce){.scene-spot .spot-ring:after{animation:none;opacity:.4}}
+/* Gentle ambient movement, separate from scroll-driven layer transforms. */
+.hero.immersive:not(.scene-static) .scene-near>img{animation:foliage-breeze 8s ease-in-out infinite;transform-origin:12% 95%}
+@keyframes foliage-breeze{0%,100%{transform:rotate(-.45deg) translateY(0)}50%{transform:rotate(.65deg) translateY(-5px)}}
+.scene-ambience{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:2}
+.scene-ambience i{position:absolute;width:3px;height:3px;background:#fff5d7;border-radius:50%;box-shadow:0 0 9px 2px #fff2ca66;opacity:0;animation:scene-mote var(--drift-duration) ease-in-out var(--drift-delay) infinite}
+@keyframes scene-mote{0%,100%{opacity:0;transform:translate3d(0,12px,0)}25%,65%{opacity:.45}85%{opacity:0;transform:translate3d(18px,-38px,0)}}
+.scene-spot.spot-near .spot-ring{transform:scale(1.16);background:#ffffff25;box-shadow:0 0 0 7px #ffffff20,0 0 22px #fff2d680}
+.scene-spot.spot-near .spot-name{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.scene-spot[data-pet="bird"] .spot-ring:after{animation-delay:-.8s}
+.scene-spot[data-pet="reptile"] .spot-ring:after{animation-delay:-1.7s}
+.scene-spot.spot-greet .spot-ring{animation:pet-greeting .65s ease-out}
+@keyframes pet-greeting{0%,100%{transform:scale(1)}35%{transform:scale(1.35)}65%{transform:scale(.95)}}
+.hero.scene-static .scene-ambience{display:none}
+.hero.scene-static .scene-near>img,.hero.scene-static .scene-spot.spot-greet .spot-ring{animation:none}
+.hero.scene-paused .scene-near>img,.hero.scene-paused .scene-ambience i,.hero.scene-paused .spot-ring:after{animation-play-state:paused}
+@media(max-width:740px){.scene-ambience i:nth-child(even){display:none}}
+@media(prefers-reduced-motion:reduce){.hero.immersive .scene-near>img,.hero.immersive .scene-ambience i,.hero.immersive .scene-spot.spot-greet .spot-ring{animation:none}.scene-ambience{display:none}}
+
+/* Right-hand pet labels open inward, never beyond the hero edge. */
+.scene-spot[data-pet="bird"] .spot-name,.scene-spot[data-pet="reptile"] .spot-name{left:auto;right:calc(50% + 8px);transform:translateY(5px);background:#fffaf2;color:#17314e;max-width:calc(100vw - 64px);white-space:normal;width:max-content;text-align:center;line-height:1.4}
+.scene-spot[data-pet="bird"]:hover .spot-name,.scene-spot[data-pet="bird"]:focus-visible .spot-name,.scene-spot[data-pet="bird"].spot-near .spot-name,.scene-spot[data-pet="reptile"]:hover .spot-name,.scene-spot[data-pet="reptile"]:focus-visible .spot-name,.scene-spot[data-pet="reptile"].spot-near .spot-name{transform:translateY(0)}
